@@ -8,6 +8,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import print.PrintableColors;
+import print.Printer;
+
 public class Main {
 
     public static byte[] convertFileToByteArray(String filePath) throws IOException {
@@ -47,7 +50,29 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Hello World!");
+        if (args.length == 0 || args.length != 4) {
+
+            Printer.println("Usage: <mode> <host> <port> <file>", PrintableColors.BLUE);
+
+            Printer.println("The modes are server (s) or client (c)", PrintableColors.BLUE);
+
+            System.exit(0);
+
+        }
+
+        char mode = args[0].toLowerCase().charAt(0);
+
+        if (mode == 's') {
+
+            Printer.println("Server", PrintableColors.PURPLE);
+
+        }
+
+        if (mode == 'c') {
+
+            Printer.println("Client", PrintableColors.GREEN);
+
+        }
 
     }
 
